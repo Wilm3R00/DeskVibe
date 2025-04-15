@@ -1,0 +1,75 @@
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
+
+export default function DeskVibe() {
+  const [email, setEmail] = useState("");
+
+  return (
+    <div className="min-h-screen bg-neutral-100 p-6">
+      <header className="text-center mb-10">
+        <h1 className="text-4xl font-bold mb-2">DeskVibe</h1>
+        <p className="text-lg text-neutral-600">Make your workspace your happy place</p>
+      </header>
+
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {products.map((product) => (
+          <Card key={product.title} className="rounded-2xl shadow-md">
+            <img
+              src={product.image}
+              alt={product.title}
+              className="w-full h-48 object-cover rounded-t-2xl"
+            />
+            <CardContent className="p-4">
+              <h2 className="text-xl font-semibold mb-1">{product.title}</h2>
+              <p className="text-neutral-600 text-sm mb-2">{product.description}</p>
+              <p className="text-lg font-bold mb-2">{product.price}</p>
+              <Button className="w-full">Lägg i kundvagn</Button>
+            </CardContent>
+          </Card>
+        ))}
+      </section>
+
+      <section className="mt-16 text-center">
+        <h2 className="text-2xl font-semibold mb-2">Få 10% rabatt på ditt första köp</h2>
+        <p className="mb-4 text-neutral-600">Anmäl dig till vårt nyhetsbrev</p>
+        <div className="flex justify-center gap-2 max-w-md mx-auto">
+          <Input
+            placeholder="Din e-post"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Button>Prenumerera</Button>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+const products = [
+  {
+    title: "LED-lampa med trådlös laddning",
+    description: "Elegant skrivbordslampa med inbyggd Qi-laddare.",
+    price: "399 kr",
+    image: "https://images.unsplash.com/photo-1603791452906-cfdb7f6c0a5c"
+  },
+  {
+    title: "Kabelorganisatör i trä",
+    description: "Håll ordning med stil. Perfekt för skrivbordet.",
+    price: "129 kr",
+    image: "https://images.unsplash.com/photo-1616627988128-66f49dbb489b"
+  },
+  {
+    title: "Handledsstöd i konstläder",
+    description: "Mjuk, ergonomisk komfort för långa arbetsdagar.",
+    price: "179 kr",
+    image: "https://images.unsplash.com/photo-1591368573462-cf7a9c9e9d02"
+  },
+  {
+    title: "Minimalistisk pennhållare",
+    description: "Snygg och funktionell. Passar alla skrivbord.",
+    price: "99 kr",
+    image: "https://images.unsplash.com/photo-1606813909025-030e31c48fdd"
+  }
+];
